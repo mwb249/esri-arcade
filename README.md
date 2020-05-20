@@ -1,3 +1,3 @@
 # esri-arcade
 
-A repository to hold useful Esri Arcade Expressions.
+A repository to hold useful Esri ArcGIS Arcade Expressions.
