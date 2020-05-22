@@ -1,4 +1,4 @@
-## Address Labels
+### Address Labels
 
 Split combined address (number & name) field into an array. Return the address number.
 ```javascript
