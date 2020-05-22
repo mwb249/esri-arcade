@@ -32,7 +32,8 @@ return restriction;
 ### Construct a dynamic URL (BS&A example)
 
 ```javascript
-var url_left = "https://bsaonline.com/SiteSearch/SiteSearchResults?SearchFocus=All+Records&SearchCategory=Parcel+Number&SearchText=";
+var url_left = "https://bsaonline.com/SiteSearch/SiteSearchResults?SearchFocus=All+Records&\
+SearchCategory=Parcel+Number&SearchText=";
 var url_middle = $feature.CVTTAXCODE + $feature.PIN + "&uid=";
 var url_right = "";
 
