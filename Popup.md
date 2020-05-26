@@ -1,4 +1,5 @@
-### Connect non-spatial table to a feature layer
+### "Join" non-spatial table to a feature layer
+Useful for joining table attributes to features in another layer.
 
 ```javascript
 // Create variables for the non-spatial table and tax parcel PIN
@@ -27,6 +28,17 @@ if (total_records > 0) {
 }
 
 return restriction;
+```
+
+### GeoEnrich layer with attributes from intersecting features in another layer
+
+```javascript
+var fs_all = FeatureSetByName($map,"MABAS Box Card Areas");
+var fs_fire = Filter(fs_all, "BOXALARMTYPE LIKE 'WILDLAND'");
+var fs_intersect = Intersects(fs_fire, $feature);
+var boxcard = First(fs_intersect);
+var boxcard_number = boxcard.BOXALARMNUMBER;
+return boxcard_number;
 ```
 
 ### Construct a dynamic URL (BS&A example)
