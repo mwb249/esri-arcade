@@ -1,4 +1,4 @@
-### "Join" non-spatial table to a feature layer
+### "Join" a non-spatial table to a feature layer
 Useful for joining table attributes to features in another layer.
 
 ```javascript
@@ -34,8 +34,8 @@ return restriction;
 
 ```javascript
 var fs_all = FeatureSetByName($map,"MABAS Box Card Areas");
-var fs_fire = Filter(fs_all, "BOXALARMTYPE LIKE 'WILDLAND'");
-var fs_intersect = Intersects(fs_fire, $feature);
+var fs_fire = Filter(fs_all, "BOXALARMTYPE LIKE 'FIRE'");
+var fs_intersect = Intersects(fs_fire, Centroid($feature));
 var boxcard = First(fs_intersect);
 var boxcard_number = boxcard.BOXALARMNUMBER;
 return boxcard_number;
