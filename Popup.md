@@ -3,7 +3,7 @@ Useful for joining table attributes to features in another layer.
 
 ```javascript
 // Create variables for the non-spatial table and tax parcel PIN
-var tbl = FeatureSetById($map, "Tax_Parcel_Attribute_6943");
+var tbl = FeatureSetByName($map, "Tax Parcel Attribute");
 var f_pin = $feature.PIN;
 
 // Construct a SQL expression
