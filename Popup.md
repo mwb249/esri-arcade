@@ -44,9 +44,18 @@ return boxcard_number;
 ### Construct a dynamic URL (BS&A example)
 
 ```javascript
-var urlsource = 'https://bsaonline.com/SiteSearch/SiteSearchResults?SearchCategory=Parcel+Number&';
-var pin = $feature.CVTTAXCODE + $feature.PIN;
+var urlsource = 'https://bsaonline.com/SiteSearch/\
+SiteSearchDetails?SearchCategory=Parcel+Number&';
 var cvt_id = "";
+
+// Format Parcel ID (PIN)
+var parcel_id = $feature.PIN;
+var par_id1 = Left(parcel_id, 2);
+var par_id2 = Mid(parcel_id, 2, 2);
+var par_id3 = Mid(parcel_id, 4, 3);
+var par_id4 = Mid(parcel_id, 7, 3);
+var parcel_id = '-'+par_id1+'-'+par_id2+"-"+par_id3+"-"+par_id4;
+var pin = $feature.CVTTAXCODE + parcel_id;
 
 if ($feature.CVTTAXCODE == /*Independence Twp*/ "J ") {
     cvt_id = "268";
@@ -61,10 +70,10 @@ if ($feature.CVTTAXCODE == /*Independence Twp*/ "J ") {
 }
 
 var params = {
-  SearchOrigin: '0',
-  SearchText: pin,
-  uid: cvt_id
-};
+    ReferenceKey: pin,
+    SearchText: pin,
+    uid: cvt_id
+}
 
 return urlsource  + UrlEncode(params);
 ```
