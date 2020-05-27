@@ -44,24 +44,27 @@ return boxcard_number;
 ### Construct a dynamic URL (BS&A example)
 
 ```javascript
-var url_left = "https://bsaonline.com/SiteSearch/SiteSearchResults?SearchFocus=All+Records&\
-SearchCategory=Parcel+Number&SearchText=";
-var url_middle = $feature.CVTTAXCODE + $feature.PIN + "&uid=";
-var url_right = "";
+var urlsource = 'https://bsaonline.com/SiteSearch/SiteSearchResults?SearchCategory=Parcel+Number&';
+var pin = $feature.CVTTAXCODE + $feature.PIN;
+var cvt_id = "";
 
 if ($feature.CVTTAXCODE == /*Independence Twp*/ "J ") {
-    url_right = "268";
+    cvt_id = "268";
 } else if ($feature.CVTTAXCODE == /*Rochester Hills*/ "70") {
-    url_right = "385";
+    cvt_id = "385";
 } else if ($feature.CVTTAXCODE == /*City of Rochester*/ "68") {
-    url_right = "1655";
+    cvt_id = "1655";
 } else if ($feature.CVTTAXCODE == /*Orion Twp*/ "O ") {
-    url_right = "1637";
+    cvt_id = "1637";
 } else {
-    url_right = "";
+    cvt_id = "";
 }
 
-var combined = url_left + url_middle + url_right;
+var params = {
+  SearchOrigin: '0',
+  SearchText: pin,
+  uid: cvt_id
+};
 
-return combined;
+return urlsource  + UrlEncode(params);
 ```
